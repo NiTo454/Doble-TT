@@ -1,18 +1,21 @@
+import NavbarDj from "@/src/components/iu/navbar-dj";
+import HeroDjSection from "@/src/components/hero-dj-section";
+import LocationDjTicker from "@/src/components/location-dj-ticker";
+import ProductDjGrid from "@/src/components/product-dj-grid";
+import VideoDjSection from "@/src/components/video-dj-section";
+import FloatingDjButtons from "@/src/components/floating-dj-buttons";
+import FooterDj from "@/src/components/iu/fotter'dj";
+
 export default function DjPage() {
   return (
-    <main className="min-h-screen bg-dj-black text-dj-silver">
-      {/* Header */}
-      <header className="bg-dj-gray p-6 border-b-2 border-dj-red flex justify-center shadow-lg">
-        <h1 className="text-3xl font-bold tracking-widest text-white">DJ GILDARDO GONZÁLEZ</h1>
-      </header>
-
-      {/* Contenido principal */}
-      <section className="p-10 max-w-5xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4 text-dj-red">Siente el ritmo</h2>
-        <p className="text-dj-silver/80">
-          Aquí pondremos los paquetes de audio, galería de eventos y formulario de contacto.
-        </p>
-      </section>
+    <main className="min-h-screen bg-[#0a0a0a] text-gray-300 font-sans selection:bg-red-600 selection:text-white overflow-x-hidden relative">
+      <NavbarDj />
+      <HeroDjSection />
+      <LocationDjTicker />
+      <ProductDjGrid />
+      <VideoDjSection />
+      <FooterDj />
+      <FloatingDjButtons />
     </main>
   );
 }
