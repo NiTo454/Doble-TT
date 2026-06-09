@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -27,8 +28,8 @@ export default function FooterTT() {
                 />
               </div>
               {/* Si tu logo ya incluye el nombre, puedes ocultar o borrar el siguiente <span> */}
-              <span className="text-2xl font-black tracking-tighter text-white">
-                Gourmet<span className="text-cremeria-red">.</span>
+              <span className="text-3xl font-black tracking-tighter text-white">
+                Gourmet<span className="text-cremeria-red animate-pulse">.</span>
               </span>
             </Link>
             <p className="text-white/60 text-sm font-light leading-relaxed max-w-sm">

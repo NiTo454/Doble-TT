@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import LoadingScreen from "@/src/components/loading-screen";
+
 // Cargamos la fuente Inter de Google Fonts
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +25,7 @@ export default function RootLayout({
         antialiased hace que las letras se vean más suaves y nítidas.
       */}
       <body className={`${inter.className} antialiased`}>
+        <LoadingScreen />
         {children}
       </body>
     </html>

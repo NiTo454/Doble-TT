@@ -1,10 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function NavbarTT() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Función para desplazamiento suave (Smooth Scroll)
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
@@ -19,7 +26,7 @@ export default function NavbarTT() {
   return (
     <>
       {/* Navbar Principal */}
-      <nav className="sticky top-0 bg-white/60 backdrop-blur-2xl text-cremeria-navy py-3 px-6 flex justify-center items-center z-50 border-b border-white/40 shadow-[0_10px_40px_rgba(0,0,0,0.05)] transition-all duration-500">
+      <nav className={`sticky top-0 w-full text-cremeria-navy flex justify-center items-center z-50 transition-all duration-500 ${scrolled ? "bg-white/80 backdrop-blur-2xl py-2 px-6 border-b border-white/40 shadow-[0_10px_40px_rgba(0,0,0,0.08)]" : "bg-white/40 backdrop-blur-md py-4 px-6 border-b border-transparent"}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
 
           {/* Logo Premium con tu Imagen */}

@@ -3,8 +3,8 @@ import { useState, useEffect, useRef } from "react";
 
 // 1. Agrega aquí todos los nombres o rutas de tus videos
 const VIDEOS_PLAYLIST = [
-  "/video-presentacion.mp4",
-  "/video2-presentacion.mp4",
+  "/Video-1-dj.mp4",
+  "/Video-2-dj.mp4",
 ];
 
 export default function VideoSection() {

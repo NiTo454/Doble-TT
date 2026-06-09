@@ -1,9 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Disc } from "lucide-react";
 
 export default function NavbarDj() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
@@ -16,18 +24,19 @@ export default function NavbarDj() {
 
   return (
     <>
-      <header className="fixed w-full top-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-red-600/30 transition-all duration-500">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/dj" className="text-xl md:text-2xl font-black tracking-widest text-white group" onClick={() => setIsMenuOpen(false)}>
-            DJ GILDARDO<span className="text-red-600 transition-colors group-hover:text-white">.</span>
+      <header className={`fixed w-full top-0 z-50 transition-all duration-500 ${scrolled ? "bg-[#050505]/95 backdrop-blur-xl border-b border-red-600/30 py-3 shadow-[0_4px_30px_rgba(220,38,38,0.15)]" : "bg-transparent py-5"}`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <Link href="/dj" className="text-xl md:text-2xl font-black tracking-widest text-white group flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+            <Disc className="w-5 h-5 md:w-7 md:h-7 text-red-600 animate-[spin_4s_linear_infinite] group-hover:text-white transition-colors" />
+            <span>DJ GILDARDO<span className="text-red-600 transition-colors group-hover:text-white">.</span></span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-[0.15em]">
             <a href="#servicios" onClick={(e) => scrollToSection(e, "servicios")} className="hover:text-red-600 transition-colors text-white/80">Paquetes</a>
             <a href="#galeria" onClick={(e) => scrollToSection(e, "galeria")} className="hover:text-red-600 transition-colors text-white/80">Galería</a>
             <a href="#contacto" onClick={(e) => scrollToSection(e, "contacto")} className="hover:text-red-600 transition-colors text-white/80">Contacto</a>
-            <a href="https://wa.me/525566959722" target="_blank" rel="noopener noreferrer" className="ml-4 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(220,38,38,0.4)]">
-              Cotizar
+            <a href="https://wa.me/525566959722" target="_blank" rel="noopener noreferrer" className="ml-4 bg-red-600 hover:bg-red-500 text-white px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(220,38,38,0.5)]">
+              Cotizar Evento
             </a>
           </nav>
 
