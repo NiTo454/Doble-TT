@@ -26,12 +26,12 @@ export default function NavbarTT() {
   return (
     <>
       {/* Navbar Principal */}
-      <nav className={`sticky top-0 w-full text-cremeria-navy flex justify-center items-center z-50 transition-all duration-500 ${scrolled ? "bg-white/80 backdrop-blur-2xl py-2 px-6 border-b border-white/40 shadow-[0_10px_40px_rgba(0,0,0,0.08)]" : "bg-white/40 backdrop-blur-md py-4 px-6 border-b border-transparent"}`}>
+      <nav className={`sticky top-0 w-full text-cremeria-navy flex justify-center items-center z-50 transition-all duration-500 ${scrolled ? "bg-[#FAF8F5]/85 backdrop-blur-2xl py-2 px-6 border-b border-[#D4AF37]/10 shadow-[0_10px_40px_rgba(27,43,74,0.04)]" : "bg-[#FAF8F5]/40 backdrop-blur-md py-4 px-6 border-b border-transparent"}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
 
           {/* Logo Premium con tu Imagen */}
           <Link href="/" className="group flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
-            <div className="relative w-12 h-12 md:w-14 md:h-14 transform transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:rotate-3 group-hover:scale-110 drop-shadow-md group-hover:drop-shadow-[0_10px_20px_rgba(200,30,30,0.2)]">
+            <div className="relative w-12 h-12 md:w-14 md:h-14 transform transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:rotate-3 group-hover:scale-110 drop-shadow-md group-hover:drop-shadow-[0_10px_20px_rgba(200,30,30,0.15)]">
               <Image
                 src="/logo.png"
                 alt="Logo La Doble TT Gourmet"
@@ -71,17 +71,17 @@ export default function NavbarTT() {
               href="https://wa.me/5215575061530"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-4 relative overflow-hidden group bg-cremeria-red text-white px-8 py-3 rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] shadow-[0_8px_20px_rgba(200,30,30,0.3)] hover:shadow-[0_15px_30px_rgba(200,30,30,0.5)] hover:-translate-y-1 active:scale-95"
+              className="ml-4 relative overflow-hidden group bg-cremeria-red text-white px-8 py-3 rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] shadow-[0_8px_20px_rgba(168,44,45,0.25)] hover:shadow-[0_15px_30px_rgba(168,44,45,0.4)] hover:-translate-y-1 active:scale-95"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms] ease-in-out"></div>
-              <span className="relative z-10 tracking-widest">Hacer Pedido</span>
+              <span className="relative z-10 tracking-widest font-black">Hacer Pedido</span>
             </a>
           </div>
 
           {/* Botón Menú Mobile (Hamburguesa animada) */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden relative z-50 text-cremeria-navy p-2 bg-white/50 backdrop-blur-md rounded-xl border border-white/40 shadow-sm hover:bg-white/80 transition-all duration-300 active:scale-95"
+            className="md:hidden relative z-50 text-cremeria-navy p-2 bg-white/40 backdrop-blur-md rounded-xl border border-[#D4AF37]/15 shadow-sm hover:bg-white/80 transition-all duration-300 active:scale-95"
             aria-label="Toggle Menu"
           >
             <div className="w-6 h-5 relative flex flex-col justify-between">
@@ -96,7 +96,7 @@ export default function NavbarTT() {
 
       {/* Menú Desplegable Mobile */}
       <div
-        className={`fixed inset-0 z-40 bg-white/95 backdrop-blur-3xl transition-all duration-500 md:hidden flex flex-col items-center justify-center ${
+        className={`fixed inset-0 z-40 bg-[#FAF8F5]/98 backdrop-blur-3xl transition-all duration-500 md:hidden flex flex-col items-center justify-center ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -121,10 +121,10 @@ export default function NavbarTT() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsMenuOpen(false)}
-            className="mt-8 relative overflow-hidden group bg-cremeria-red text-white px-10 py-4 rounded-full transition-all duration-300 shadow-[0_10px_30px_rgba(200,30,30,0.4)] active:scale-95"
+            className="mt-8 relative overflow-hidden group bg-cremeria-red text-white px-10 py-4 rounded-full transition-all duration-300 shadow-[0_10px_30px_rgba(168,44,45,0.3)] active:scale-95"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-active:translate-x-full transition-transform duration-700"></div>
-            <span className="relative z-10 font-bold uppercase tracking-widest text-sm">Hacer Pedido</span>
+            <span className="relative z-10 font-black uppercase tracking-widest text-sm">Hacer Pedido</span>
           </a>
         </div>
       </div>

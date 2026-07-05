@@ -1,60 +1,74 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Store, Music } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   const [hovered, setHovered] = useState<"cremeria" | "dj" | null>(null);
 
   return (
-    <main className="flex min-h-[100dvh] flex-col md:flex-row overflow-hidden overscroll-none bg-[#050505] relative font-sans text-white selection:bg-white/20">
+    <main className="flex min-h-[100dvh] flex-col md:flex-row overflow-hidden overscroll-none bg-[#030303] relative font-sans text-white selection:bg-white/10">
+      <h1 className="sr-only">Portal La Doble TT: Cremería Gourmet y DJ Gildardo González en Tizayuca</h1>
 
       {/* =========================================
-          LADO 1: CREMERÍA (Gourmet)
+          LADO 1: CREMERÍA (Gourmet - Warm Cream & Luxury Copper/Gold)
           ========================================= */}
       <Link
         href="/cremeria"
         onMouseEnter={() => setHovered("cremeria")}
         onMouseLeave={() => setHovered(null)}
-        className={`group relative flex flex-col items-center justify-center p-6 md:p-10 overflow-hidden outline-none transition-all duration-700 ease-out
-          border-b border-white/5 md:border-b-0 md:border-r
+        className={`group relative flex flex-col items-center justify-center p-8 md:p-12 overflow-hidden outline-none transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+          border-b border-white/5 md:border-b-0 md:border-r md:border-white/5
           flex-1
           ${
             hovered === "cremeria"
-              ? "md:flex-[1.4] z-10"
+              ? "md:flex-[1.3] z-10"
               : hovered === "dj"
-              ? "md:flex-[0.6] opacity-40 md:grayscale-[60%]"
+              ? "md:flex-[0.7] opacity-30 md:grayscale md:scale-[0.98]"
               : "md:flex-1"
           }
         `}
       >
-        {/* Background Base */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1128] via-[#121b36] to-[#050505] z-0 transition-transform duration-1000 md:group-hover:scale-105"></div>
+        {/* Background Gradients: Tonos cálidos madera gourmet y cobre obscuro */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1c120c] via-[#100a06] to-[#030303] z-0 transition-transform duration-1000 ease-out md:group-hover:scale-105"></div>
 
-        {/* Glow Hover (Optimizado sin filtro blur para máxima fluidez) */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.15)_0%,_transparent_60%)] opacity-0 md:group-hover:opacity-100 transition-opacity duration-1000 z-0 pointer-events-none"></div>
+        {/* Resplandor dorado/cálido de fondo en Hover */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.22)_0%,_transparent_60%)] opacity-0 md:group-hover:opacity-100 transition-opacity duration-1000 z-0 pointer-events-none"></div>
 
-        {/* Texture */}
-        <div className="absolute inset-0 bg-[url('/hero-tt.png')] bg-cover bg-center opacity-10 mix-blend-screen md:group-hover:opacity-20 transition-opacity duration-700 z-0 pointer-events-none"></div>
+        {/* Textura de fondo gourmet sutil */}
+        <div className="absolute inset-0 bg-[url('/hero-tt.png')] bg-cover bg-center opacity-[0.06] mix-blend-screen md:group-hover:opacity-[0.12] transition-opacity duration-700 z-0 pointer-events-none"></div>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center transform transition-transform duration-700 md:group-hover:-translate-y-4">
-          {/* Icon */}
-          <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-black/40 border border-white/10 backdrop-blur-md flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] md:group-hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] md:group-hover:scale-110 md:group-hover:bg-white/5 md:group-hover:border-blue-500/30 transition-all duration-500">
-            <Store className="w-10 h-10 md:w-14 md:h-14 text-blue-400 md:group-hover:text-blue-300 transition-colors duration-500" strokeWidth={1.5} />
+        {/* Contenido principal */}
+        <div className="relative z-10 flex flex-col items-center text-center transform transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] md:group-hover:-translate-y-6">
+          
+          {/* Contenedor del Logotipo Real con Anillo Dorado de Cristal */}
+          <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-black/50 border border-white/10 backdrop-blur-md flex items-center justify-center mb-6 shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-500 ease-out
+            md:group-hover:shadow-[0_20px_45px_rgba(212,175,55,0.35)] md:group-hover:scale-105 md:group-hover:bg-[#251810]/40 md:group-hover:border-[#D4AF37]/75"
+          >
+            <div className="relative w-[78%] h-[78%] rounded-full overflow-hidden flex items-center justify-center">
+              <Image 
+                src="/logo.png" 
+                alt="La Doble TT Gourmet Logo" 
+                fill
+                className="object-contain p-1" 
+              />
+            </div>
           </div>
 
-          {/* Text */}
-          <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-2 md:group-hover:text-transparent md:group-hover:bg-clip-text md:group-hover:bg-gradient-to-r md:group-hover:from-white md:group-hover:to-blue-200 transition-all duration-500">
+          {/* Textos Informativos */}
+          <h2 className="text-4.5xl md:text-6.5xl font-black tracking-tighter mb-1 transition-all duration-500 md:group-hover:text-transparent md:group-hover:bg-clip-text md:group-hover:bg-gradient-to-r md:group-hover:from-white md:group-hover:via-[#F5E296] md:group-hover:to-[#D4AF37]">
             La Doble TT
-          </h1>
-          <span className="text-lg md:text-2xl text-blue-200/60 font-light tracking-[0.3em] uppercase mb-8 md:group-hover:text-blue-200/90 transition-colors duration-500">
+          </h2>
+          <span className="text-sm md:text-base text-[#D4AF37] font-black tracking-[0.4em] uppercase mb-4 transition-colors duration-500">
             Gourmet
           </span>
+          <p className="text-xs md:text-sm text-amber-200/50 tracking-widest uppercase font-semibold mb-8 max-w-[280px] md:group-hover:text-amber-100/80 transition-colors duration-500">
+            Quesos Artesanales • Carnes Frías • Abarrotes
+          </p>
 
-          {/* Button */}
-          <div className="overflow-hidden rounded-full">
-            <p className="text-[10px] md:text-xs font-bold px-8 py-3 uppercase tracking-widest bg-white/5 border border-white/10 backdrop-blur-md text-white/70 transition-all duration-500 md:group-hover:bg-blue-600 md:group-hover:text-white md:group-hover:border-blue-500 md:group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+          {/* Botón de Entrada */}
+          <div className="overflow-hidden rounded-full p-[1px] bg-gradient-to-r from-white/10 to-white/5 md:group-hover:from-[#D4AF37] md:group-hover:to-amber-500">
+            <p className="text-[10px] md:text-xs font-black px-8 py-3.5 uppercase tracking-[0.2em] bg-black/80 backdrop-blur-md text-white/80 transition-all duration-500 md:group-hover:bg-transparent md:group-hover:text-white md:group-hover:tracking-[0.25em]">
               Entrar a Cremería
             </p>
           </div>
@@ -68,44 +82,61 @@ export default function Home() {
         href="/dj"
         onMouseEnter={() => setHovered("dj")}
         onMouseLeave={() => setHovered(null)}
-        className={`group relative flex flex-col items-center justify-center p-6 md:p-10 overflow-hidden outline-none transition-all duration-700 ease-out
+        className={`group relative flex flex-col items-center justify-center p-8 md:p-12 overflow-hidden outline-none transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
           flex-1
           ${
             hovered === "dj"
-              ? "md:flex-[1.4] z-10"
+              ? "md:flex-[1.3] z-10"
               : hovered === "cremeria"
-              ? "md:flex-[0.6] opacity-40 md:grayscale-[60%]"
+              ? "md:flex-[0.7] opacity-30 md:grayscale md:scale-[0.98]"
               : "md:flex-1"
           }
         `}
       >
         {/* Background Base */}
-        <div className="absolute inset-0 bg-[#050505] z-0">
-          <div className="absolute inset-0 bg-[url('/Dj-Portada.jpeg')] bg-cover bg-center opacity-30 transition-all duration-1000 md:group-hover:scale-105 grayscale md:group-hover:grayscale-0 pointer-events-none"></div>
-          <div className="absolute inset-0 bg-gradient-to-tl from-[#140505]/95 via-[#1a0a0a]/90 to-[#050505]/95 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[#030303] z-0">
+          <div className="absolute inset-0 bg-[url('/Dj-Portada.jpeg')] bg-cover bg-center opacity-25 transition-all duration-1000 ease-out md:group-hover:scale-105 grayscale md:group-hover:grayscale-0 md:group-hover:opacity-40 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-tl from-[#1a0404]/95 via-[#0e0303]/90 to-[#030303]/95 pointer-events-none"></div>
         </div>
 
-        {/* Glow Hover (Optimizado sin filtro blur para máxima fluidez) */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(220,38,38,0.15)_0%,_transparent_60%)] opacity-0 md:group-hover:opacity-100 transition-opacity duration-1000 z-0 pointer-events-none"></div>
+        {/* Resplandor rojo/neón de fondo en Hover */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(239,68,68,0.12)_0%,_transparent_60%)] opacity-0 md:group-hover:opacity-100 transition-opacity duration-1000 z-0 pointer-events-none"></div>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center transform transition-transform duration-700 md:group-hover:-translate-y-4">
-          {/* Icon */}
-          <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-black/40 border border-white/10 backdrop-blur-md flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] md:group-hover:shadow-[0_0_40px_rgba(220,38,38,0.3)] md:group-hover:scale-110 md:group-hover:bg-white/5 md:group-hover:border-red-500/30 transition-all duration-500">
-            <Music className="w-10 h-10 md:w-14 md:h-14 text-red-500 md:group-hover:text-red-400 transition-colors duration-500" strokeWidth={1.5} />
+        {/* Contenido principal */}
+        <div className="relative z-10 flex flex-col items-center text-center transform transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] md:group-hover:-translate-y-6">
+          
+          {/* Vinilo SVG que gira interactivamente en Hover */}
+          <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-black/50 border border-white/10 backdrop-blur-md flex items-center justify-center mb-6 shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-500 ease-out
+            md:group-hover:shadow-[0_20px_45px_rgba(239,68,68,0.25)] md:group-hover:scale-105 md:group-hover:bg-[#1a0505]/40 md:group-hover:border-red-500/50"
+          >
+            <svg 
+              className="w-14 h-14 md:w-20 md:h-20 text-red-600 transition-all duration-500 animate-[spin_6s_linear_infinite] md:group-hover:animate-[spin_1.5s_linear_infinite]" 
+              viewBox="0 0 24 24" 
+              fill="currentColor"
+            >
+              <circle cx="12" cy="12" r="10" fill="black" stroke="currentColor" strokeWidth="0.5" />
+              <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="0.4" strokeDasharray="2,2" />
+              <circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" strokeWidth="0.4" />
+              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="0.4" strokeDasharray="1,1" />
+              <circle cx="12" cy="12" r="2.8" fill="currentColor" />
+              <circle cx="12" cy="12" r="0.8" fill="black" />
+            </svg>
           </div>
 
-          {/* Text */}
-          <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-2 md:group-hover:text-transparent md:group-hover:bg-clip-text md:group-hover:bg-gradient-to-r md:group-hover:from-white md:group-hover:to-red-200 transition-all duration-500">
+          {/* Textos Informativos */}
+          <h2 className="text-4.5xl md:text-6.5xl font-black tracking-tighter mb-1 transition-all duration-500 md:group-hover:text-transparent md:group-hover:bg-clip-text md:group-hover:bg-gradient-to-r md:group-hover:from-white md:group-hover:via-red-200 md:group-hover:to-red-500">
             DJ Gildardo
-          </h1>
-          <span className="text-lg md:text-2xl text-red-200/60 font-light tracking-[0.3em] uppercase mb-8 md:group-hover:text-red-200/90 transition-colors duration-500">
+          </h2>
+          <span className="text-sm md:text-base text-red-500 font-black tracking-[0.4em] uppercase mb-4 transition-colors duration-500">
             Eventos
           </span>
+          <p className="text-xs md:text-sm text-red-200/50 tracking-widest uppercase font-semibold mb-8 max-w-[280px] md:group-hover:text-red-200/75 transition-colors duration-500">
+            Audio Profesional • Iluminación Led • Cabinas
+          </p>
 
-          {/* Button */}
-          <div className="overflow-hidden rounded-full">
-            <p className="text-[10px] md:text-xs font-bold px-8 py-3 uppercase tracking-widest bg-white/5 border border-white/10 backdrop-blur-md text-white/70 transition-all duration-500 md:group-hover:bg-red-600 md:group-hover:text-white md:group-hover:border-red-500 md:group-hover:shadow-[0_0_20px_rgba(220,38,38,0.4)]">
+          {/* Botón de Entrada */}
+          <div className="overflow-hidden rounded-full p-[1px] bg-gradient-to-r from-white/10 to-white/5 md:group-hover:from-red-600 md:group-hover:to-red-400">
+            <p className="text-[10px] md:text-xs font-black px-8 py-3.5 uppercase tracking-[0.2em] bg-black/80 backdrop-blur-md text-white/80 transition-all duration-500 md:group-hover:bg-transparent md:group-hover:text-white md:group-hover:tracking-[0.25em]">
               Ver Paquetes
             </p>
           </div>
@@ -113,10 +144,18 @@ export default function Home() {
       </Link>
 
       {/* =========================================
-          DIVISOR CENTRAL (Pill badge)
+          DIVISOR CENTRAL REACTIVO (Pill Medallion)
           ========================================= */}
-      <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none flex items-center justify-center">
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#050505]/80 backdrop-blur-md border border-white/10 flex items-center justify-center shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white/50 text-xs md:text-sm font-black tracking-widest uppercase transition-transform duration-700 md:hover:scale-110">
+      <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none flex items-center justify-center transition-all duration-700">
+        <div className={`w-14 h-14 md:w-20 md:h-20 rounded-full border flex items-center justify-center font-black tracking-widest text-xs md:text-base transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+          ${
+            hovered === "cremeria"
+              ? "border-[#D4AF37] bg-[#FAF8F5] text-[#1B2B4A] shadow-[0_0_35px_rgba(212,175,55,0.65)] scale-110 rotate-12"
+              : hovered === "dj"
+              ? "border-red-600 bg-[#050505] text-red-500 shadow-[0_0_35px_rgba(220,38,38,0.65)] scale-110 -rotate-12"
+              : "border-white/10 bg-[#050505]/95 text-white/55 shadow-[0_0_20px_rgba(0,0,0,0.8)]"
+          }
+        `}>
           TT
         </div>
       </div>
